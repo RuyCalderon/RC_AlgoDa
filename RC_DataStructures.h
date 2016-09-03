@@ -6,7 +6,7 @@
 namespace RC_DataStructures	{
 	class RC_LinkedList_Single {
 	public:
-		RC_LinkedList_Single();
+		RC_LinkedList_Single(int First);
 		~RC_LinkedList_Single();
 
 		void AddNode(int Val);
@@ -32,9 +32,14 @@ namespace RC_DataStructures	{
 
 	class RC_LinkedList_Double {
 	public:
-		RC_LinkedList_Double();
+		RC_LinkedList_Double(int First);
 		~RC_LinkedList_Double();
-
+		void AddNode(int Val);
+		void InsertNode(int Val);
+		void RemoveNode();
+		bool Find(int Val);
+		void Next();
+		void Previous();
 	private:
 		struct Node {
 			int val;
@@ -46,6 +51,7 @@ namespace RC_DataStructures	{
 		};
 		Node Head;
 		Node Current;
+		Node Tail;
 	};
 
 	class RC_Tree {

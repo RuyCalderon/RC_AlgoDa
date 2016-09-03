@@ -1,9 +1,8 @@
 #include "RC_DataStructures.h"
 
 
-RC_DataStructures::RC_LinkedList_Single::RC_LinkedList_Single() {
-	Head = *(Node*)malloc(sizeof(Node));
-	Head = {};
+RC_DataStructures::RC_LinkedList_Single::RC_LinkedList_Single(int First = 0;) {
+	Head = *new Node(First);
 	Current = Head;
 }
 RC_DataStructures::RC_LinkedList_Single::~RC_LinkedList_Single() {
