@@ -1,11 +1,12 @@
 #include "RC_DataStructures.h"
 
+using namespace RC_DataStructures;
 
-RC_DataStructures::RC_LinkedList_Single::RC_LinkedList_Single(int First = 0) {
+RC_LinkedList_Single::RC_LinkedList_Single(int First = 0) {
 	Head = *new Node(First);
 	Current = Head;
 }
-RC_DataStructures::RC_LinkedList_Single::~RC_LinkedList_Single() {
+RC_LinkedList_Single::~RC_LinkedList_Single() {
 	Current = Head;
 	while (Current.Next) {
 		Node *NextToDelete = Current.Next;
@@ -14,29 +15,29 @@ RC_DataStructures::RC_LinkedList_Single::~RC_LinkedList_Single() {
 	}
 	delete &Current;
 }
-void RC_DataStructures::RC_LinkedList_Single::AddNode(int Val = 0) {
+void RC_LinkedList_Single::AddNode(int Val = 0) {
 	ToTail();
 	Current.Next = new Node(Val);
 	Current = *Current.Next;
 }
-void RC_DataStructures::RC_LinkedList_Single::InsertNode(int Val = 0) {
+void RC_LinkedList_Single::InsertNode(int Val = 0) {
 	Node *OldNext = Current.Next;
 	Current.Next = new Node(Val);
 
 	Current = *Current.Next;
 	Current.Next = OldNext;
 }
-void RC_DataStructures::RC_LinkedList_Single::ToHead() {
+void RC_LinkedList_Single::ToHead() {
 	Current = Head;
 }
-void  RC_DataStructures::RC_LinkedList_Single::ToTail() {
+void  RC_LinkedList_Single::ToTail() {
 	Node *This=&Current;
 	while (This->Next) {
 		This = This->Next;
 	}
 	Current = *This;
 }
-int RC_DataStructures::RC_LinkedList_Single::Pop() {
+int RC_LinkedList_Single::Pop() {
 	Node *LastCurrent;
 	while (Current.Next) {
 		LastCurrent = &Current;
@@ -49,14 +50,14 @@ int RC_DataStructures::RC_LinkedList_Single::Pop() {
 	Current = *LastCurrent;
 	return val;
 }
-int* RC_DataStructures::RC_LinkedList_Single::Next() {
+int* RC_LinkedList_Single::Next() {
 	if (Current.Next) {
 		Current = *Current.Next;
 		return &Current.val;
 	}
 	return 0;
 }
-bool RC_DataStructures::RC_LinkedList_Single::Find(int Val) {
+bool RC_LinkedList_Single::Find(int Val) {
 	Current = Head;
 	int *CheckVal;
 	while (CheckVal = Next()) {

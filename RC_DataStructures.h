@@ -55,20 +55,36 @@ namespace RC_DataStructures	{
 		Node Current;
 		Node Tail;
 	};
+	class RC_Set {
+	public:
+		static RC_Set Union(RC_Set A, RC_Set B);
+		static RC_Set Intersection(RC_Set A, RC_Set B);
+		static RC_Set IsEquivalent(RC_Set A, RC_Set B);
+		static RC_Set NullSet();
 
+		RC_Set(int Elements[]);
+		RC_Set(int *Elements, int ElementCount);
+		~RC_Set();
+		RC_Set Subset();
+		RC_Set Difference(RC_Set B);
+		int Cardinality();
+		
+		bool isElement(int Value);
+	private:
+		RC_Set();
+		struct Container {
+			int Value;
+		};
+		Container *Elements;
+		int numElements;
+	};
 	class RC_Tree {
 
 	};
-
-	class RC_HashMap {
-
-	};
-
 	class RC_BinaryTree {
 
 	};
-
-	class RC_Set {
+	class RC_HashMap {
 
 	};
 };
