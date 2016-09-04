@@ -7,8 +7,8 @@ RC_DataStructures::RC_LinkedList_Double::RC_LinkedList_Double(int First = 0) {
 	Tail = Head;
 }
 RC_DataStructures::RC_LinkedList_Double::~RC_LinkedList_Double() {
-	Current = Head;
-	while (Current.Next) {
+	ToHead();
+	while (Next()) {
 		Current = *Current.Next;
 		delete Current.Previous;
 	}
@@ -41,11 +41,32 @@ void RC_DataStructures::RC_LinkedList_Double::RemoveNode() {
 	Current = *NewCurrent;
 }
 bool RC_DataStructures::RC_LinkedList_Double::Find(int Val) {
-	
+	ToHead();
+	while (Next()) {
+		if (Val == Current.val) {
+			return true;
+		}
+	}
+	return false;
 }
-void RC_DataStructures::RC_LinkedList_Double::Next() {
-
+int* RC_DataStructures::RC_LinkedList_Double::Next() {
+	if (Current.Next) {
+		Current = *Current.Next;
+		return &Current.val;
+	}
+	return 0;
 }
-void RC_DataStructures::RC_LinkedList_Double::Previous() {
+int* RC_DataStructures::RC_LinkedList_Double::Previous() {
+	if (Current.Previous) {
+		Current = *Current.Previous;
+		return &Current.val;
+	}
+	return 0;
+}
 
+void RC_DataStructures::RC_LinkedList_Double::ToHead() {
+	Current = Head;
+}
+void RC_DataStructures::RC_LinkedList_Double::ToTail() {
+	Current = Tail;
 }

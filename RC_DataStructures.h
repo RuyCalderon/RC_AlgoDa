@@ -29,7 +29,6 @@ namespace RC_DataStructures	{
 		Node Head;
 		Node Current;
 	};
-
 	class RC_LinkedList_Double {
 	public:
 		RC_LinkedList_Double(int First);
@@ -38,8 +37,11 @@ namespace RC_DataStructures	{
 		void InsertNode(int Val);
 		void RemoveNode();
 		bool Find(int Val);
-		void Next();
-		void Previous();
+		int* Next();
+		int* Previous();
+
+		void ToHead();
+		void ToTail();
 	private:
 		struct Node {
 			int val;

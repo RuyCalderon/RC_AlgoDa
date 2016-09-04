@@ -1,7 +1,7 @@
 #include "RC_DataStructures.h"
 
 
-RC_DataStructures::RC_LinkedList_Single::RC_LinkedList_Single(int First = 0;) {
+RC_DataStructures::RC_LinkedList_Single::RC_LinkedList_Single(int First = 0) {
 	Head = *new Node(First);
 	Current = Head;
 }
@@ -14,7 +14,6 @@ RC_DataStructures::RC_LinkedList_Single::~RC_LinkedList_Single() {
 	}
 	delete &Current;
 }
-
 void RC_DataStructures::RC_LinkedList_Single::AddNode(int Val = 0) {
 	ToTail();
 	Current.Next = new Node(Val);
@@ -30,7 +29,6 @@ void RC_DataStructures::RC_LinkedList_Single::InsertNode(int Val = 0) {
 void RC_DataStructures::RC_LinkedList_Single::ToHead() {
 	Current = Head;
 }
-
 void  RC_DataStructures::RC_LinkedList_Single::ToTail() {
 	Node *This=&Current;
 	while (This->Next) {
@@ -38,7 +36,6 @@ void  RC_DataStructures::RC_LinkedList_Single::ToTail() {
 	}
 	Current = *This;
 }
-
 int RC_DataStructures::RC_LinkedList_Single::Pop() {
 	Node *LastCurrent;
 	while (Current.Next) {
@@ -52,7 +49,6 @@ int RC_DataStructures::RC_LinkedList_Single::Pop() {
 	Current = *LastCurrent;
 	return val;
 }
-
 int* RC_DataStructures::RC_LinkedList_Single::Next() {
 	if (Current.Next) {
 		Current = *Current.Next;
