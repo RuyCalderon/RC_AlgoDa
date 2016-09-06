@@ -2,6 +2,7 @@
 #include<iostream>
 #include<cassert>
 #include<cmath>
+#include<malloc.h>
 #if defined(_WIN64)
 	#include <Windows.h> //for virtual alloc
 	#define RC_RESERVE_MEM(TYPE,COUNT) (TYPE *)VirtualAlloc(0,COUNT*sizeof(TYPE),MEM_RESERVE,PAGE_READWRITE);
@@ -13,6 +14,7 @@
 #else
 	//linx and mmap()
 #endif
+#include "RC_Algorithm.h"
 
 
 namespace RC_DataStructures	{
@@ -69,20 +71,20 @@ namespace RC_DataStructures	{
 	};
 	class RC_Set {
 	public:
-		static RC_Set Union(RC_Set A, RC_Set B);
-		static RC_Set Intersection(RC_Set A, RC_Set B);
-		static RC_Set NullSet();
-		static bool IsEquivalent(RC_Set A, RC_Set B);
+		static RC_Set* Union(RC_Set *A, RC_Set *B);
+		static RC_Set* Intersection(RC_Set *A, RC_Set *B);
+		static RC_Set* NullSet();
+		static bool IsEquivalent(RC_Set *A, RC_Set *B);
 
 		RC_Set(int Elements[]) {};
 		RC_Set(int *Elements, int ElementCount);
 		~RC_Set();
-		RC_Set Subset(int start, int end);
+		RC_Set* Subset(int start, int end);
 		RC_Set* TempSubset(int start, int end);
-		RC_Set Difference(RC_Set B);
+		RC_Set* Difference(RC_Set *B);
 		int Cardinality();
 		
-		bool isSubset(RC_Set SuperSet);
+		bool isSubset(RC_Set *B);
 		bool ContainsElement(int Value);
 	private:
 		RC_Set();
@@ -91,12 +93,9 @@ namespace RC_DataStructures	{
 			Container(int *Val) : val(Val) {};
 			~Container() {};
 		};
-		static int *GlobalSet;
-		static int GlobalMemReserveSize;
-		static int numGlobalElements;
-
 
 		int numElements;
+		Container *Elements;
 	};
 	class RC_Tree {
 

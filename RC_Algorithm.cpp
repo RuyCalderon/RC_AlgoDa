@@ -15,7 +15,7 @@ unsigned int BitwiseReverse(unsigned int Number, int Size)
 	return New;
 }
 
-void RC_Algorithm::FillRandomData(int DataSet[], int length, int RangeMin, int RangeMax, unsigned int Seed)
+void RC_Algorithm::FillRandomData(int *DataSet, int length, int RangeMin, int RangeMax, unsigned int Seed)
 {
 	assert(RangeMax > RangeMin);
 	unsigned int ReverseSeed = BitwiseReverse(Seed,32);
@@ -89,7 +89,7 @@ void RC_Algorithm::Merge(int *Source, int start, int end)
 		//else, the two happen to be in correct order!
 	}
 }
-void RC_Algorithm::MergeSort(int DataSet[], int length)
+void RC_Algorithm::MergeSort(int *DataSet, int length)
 {
 	Merge(DataSet, 0, length);
 }
@@ -232,7 +232,7 @@ void RC_Algorithm::QSort(int *Source, int first_index, int last_index, float sug
 	}
 	
 }
-void RC_Algorithm::QuickSort(int DataSet[], int length, float suggestion) 
+void RC_Algorithm::QuickSort(int *DataSet, int length, float suggestion) 
 {
 	//not necessary but I want to be clear that these are intended to be two separate code paths
 	if (suggestion >= 0) 
